@@ -45,6 +45,6 @@ Description: NetEase Cloud Music desktop client with synchronized lyrics
 Section: sound
 Priority: optional
 Depends: ${depends#shlibs:Depends=}, ca-certificates, libgl1-mesa-dri, fonts-noto-cjk
-Homepage: https://github.com/c99z/netease-cloud-music-redesign
+Homepage: https://github.com/c99z/netease-cloud-music-linux
 EOF
 dpkg-deb --root-owner-group -Zxz -z4 --build "$root" "$output/record-room_${version}_${arch}.deb"

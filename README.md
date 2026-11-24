@@ -6,7 +6,7 @@
 
 ## 安装
 
-在 Ubuntu 24.04（x86-64）上，从[发行页](https://github.com/c99z/netease-cloud-music-redesign/releases/latest)下载 `.deb` 安装包。在下载目录执行：
+在 Ubuntu 24.04（x86-64）上，从[发行页](https://github.com/c99z/netease-cloud-music-linux/releases/latest)下载 `.deb` 安装包。在下载目录执行：
 
 ```bash
 sudo apt install ./record-room_0.1.1_amd64.deb
