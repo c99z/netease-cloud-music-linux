@@ -1,0 +1,35 @@
+# 网易云音乐 · Qt 桌面客户端
+
+Record Room 是一款用 C++ 和 Qt Quick/QML 编写的 Linux 桌面音乐客户端。打开应用就能浏览网易云音乐的公开榜单、搜索歌曲并播放；扫码登录后，还可以同步歌单、收藏音乐和使用私人漫游。
+
+![访客模式下的推荐首页，展示精选推荐、雷达歌单和底部播放栏](docs/screenshots/discovery.png)
+
+## 主要功能
+
+- **发现音乐**　从推荐页进入雷达歌单，按分类逛歌单广场，或在排行榜查看热门曲目和排名变化。播客区可以按分类找节目，也能浏览热门榜和新晋榜。
+- **分类搜索**　按单曲、歌单、歌手、专辑或播客查看结果。点击曲目即可播放，也可以从列表进入歌手或专辑详情。
+- **播放与歌词**　全屏播放页提供黑胶唱片视图、歌词和相似推荐。队列支持下一首播放、移除曲目，以及顺序、随机、单曲循环和列表循环四种模式。
+- **个人音乐库**　扫码登录后可以查看最近播放、创建歌单、收藏歌单，或用播放栏的红心把歌曲加入「我喜欢的音乐」。
+- **桌面集成**　支持浅色和深色主题、独立桌面歌词窗口，以及通过 MPRIS 使用系统媒体控件和键盘媒体键。
+
+## 界面截图
+
+| 排行榜 · 对照不同榜单的热门曲目 | 分类搜索 · 查看单曲、歌手与专辑 |
+| --- | --- |
+| [![排行榜展示官方榜单、前三名曲目和排名变化](docs/screenshots/charts.png)](docs/screenshots/charts.png) | [![以贝多芬为例的单曲搜索结果](docs/screenshots/search.png)](docs/screenshots/search.png) |
+
+播放《致爱丽丝》时，左侧黑胶唱片展示专辑封面，右侧歌词区显示「纯音乐，请欣赏」。
+
+![全屏播放页中的黑胶唱片、唱臂和纯音乐提示](docs/screenshots/player.png)
+
+## 构建与运行
+
+需要 C++17 编译器、CMake 3.21+、Ninja、OpenSSL 开发库，以及 Qt 6.9+ 的 Quick、Quick Controls 2、Qml、Network、Multimedia 和 DBus 模块。在仓库根目录运行：
+
+```bash
+qt-cmake -S qt-client -B qt-client/build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build qt-client/build
+./qt-client/build/record-room
+```
+
+客户端直接连接网易云音乐服务。更多运行选项见[客户端说明](qt-client/README.md)，各页面的支持情况见[功能核对](qt-client/功能核对.md)。
