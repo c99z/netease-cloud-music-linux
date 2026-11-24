@@ -178,9 +178,11 @@ Rectangle {
             }
             Label {
                 Layout.fillWidth: true
-                text: "网易云音乐"
+                text: Qt.application.displayName
                 color: Theme.text
                 font.pixelSize: 18
+                fontSizeMode: Text.HorizontalFit
+                minimumPixelSize: 12
                 font.weight: Font.Bold
                 elide: Text.ElideRight
             }

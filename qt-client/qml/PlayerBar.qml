@@ -205,7 +205,7 @@ Rectangle {
                     Label {
                         Layout.maximumWidth: implicitWidth
                         Layout.fillWidth: true
-                        text: bar.library.currentTrack.title || "网易云音乐"
+                        text: bar.library.currentTrack.title || Qt.application.displayName
                         textFormat: Text.PlainText
                         color: bar.ink
                         font.pixelSize: 14

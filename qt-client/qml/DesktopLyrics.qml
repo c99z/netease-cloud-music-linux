@@ -152,7 +152,7 @@ Window {
 
     readonly property string firstText: {
         if (!track.id)
-            return "网易云音乐"
+            return Qt.application.displayName
         if (current >= 0)
             return lines[current].text
         if (timed)
@@ -179,7 +179,7 @@ Window {
     }
     readonly property string trackTitleLine: {
         if (!track.id)
-            return "网易云音乐 · 等待播放"
+            return Qt.application.displayName + " · 等待播放"
         return track.artist ? track.title + " — " + track.artist : track.title
     }
     readonly property var currentWords: current >= 0 && lines[current].words ? lines[current].words : []

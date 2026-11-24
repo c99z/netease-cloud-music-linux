@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Build with the Linux Qt SDK and the system libraries of the target Ubuntu release.
+src=$(cd "$(dirname "$0")/.." && pwd)
+build=$(realpath "${1:?Usage: build-deb BUILD_DIRECTORY OUTPUT_DIRECTORY}")
+output=$(realpath -m "${2:?Missing output directory}")
+mkdir -p "$output"
+stage=$(mktemp -d)
+trap 'rm -rf "$stage"' EXIT
+root="$stage/root"
+prefix=/opt/record-room
+
+qt-cmake -S "$src" -B "$build" -G Ninja -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="$prefix" -DCMAKE_INSTALL_LIBDIR=lib -DRECORD_ROOM_BUNDLE_QT=ON
+cmake --build "$build" --parallel "${CMAKE_BUILD_PARALLEL_LEVEL:-4}"
+DESTDIR="$root" cmake --install "$build" --strip
+
+install -Dm644 "$src/packaging/local.record-room.desktop" \
+    "$root/usr/share/applications/local.record-room.desktop"
+for size in 16 32 48 64 128; do
+    install -Dm644 "$src/assets/icons/app-${size}.png" \
+        "$root/usr/share/icons/hicolor/${size}x${size}/apps/local.record-room.png"
+done
+mkdir -p "$root/usr/bin" "$root/DEBIAN" "$stage/debian"
+ln -s "$prefix/bin/record-room" "$root/usr/bin/record-room"
+install -Dm644 /usr/share/common-licenses/LGPL-3 "$root/usr/share/doc/record-room/LGPL-3"
+install -Dm644 /usr/share/common-licenses/LGPL-2.1 "$root/usr/share/doc/record-room/LGPL-2.1"
+install -Dm644 /usr/share/common-licenses/GPL-3 "$root/usr/share/doc/record-room/GPL-3"
+
+# Calculate dependencies for the executable, bundled libraries and dynamically loaded plugins.
+cd "$stage"
+touch debian/control
+mapfile -d '' binaries < <(find "$root$prefix" -type f \
+    \( -name record-room -o -name '*.so' -o -name '*.so.*' \) -print0)
+depends=$(dpkg-shlibdeps -O --ignore-missing-info "-l$root$prefix/lib" "${binaries[@]}")
+version=$(sed -n 's/^CMAKE_PROJECT_VERSION:STATIC=//p' "$build/CMakeCache.txt")
+arch=$(dpkg --print-architecture)
+cat > "$root/DEBIAN/control" <<EOF
+Package: record-room
+Version: $version
+Architecture: $arch
+Maintainer: Record Room maintainers <c99z@users.noreply.github.com>
+Description: Record Room desktop music player with synchronized lyrics
+Section: sound
+Priority: optional
+Depends: ${depends#shlibs:Depends=}, ca-certificates, libgl1-mesa-dri, fonts-noto-cjk
+Homepage: https://github.com/c99z/record-room
+EOF
+dpkg-deb --root-owner-group -Zxz -z4 --build "$root" "$output/record-room_${version}_${arch}.deb"

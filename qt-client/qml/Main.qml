@@ -13,7 +13,7 @@ ApplicationWindow {
     minimumHeight: 620
     visible: true
     flags: Qt.Window | Qt.FramelessWindowHint
-    title: "网易云音乐"
+    title: Qt.application.displayName
     color: Theme.window
     font.family: Theme.font
     palette.window: Theme.window

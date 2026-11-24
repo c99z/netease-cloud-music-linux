@@ -1,8 +1,18 @@
-# 网易云音乐 · Qt 桌面客户端
+# 唱片室 Record Room
 
 Record Room 是一款用 C++ 和 Qt Quick/QML 编写的 Linux 桌面音乐客户端。打开应用就能浏览网易云音乐的公开榜单、搜索歌曲并播放；扫码登录后，还可以同步歌单、收藏音乐和使用私人漫游。
 
 ![访客模式下的推荐首页，展示精选推荐、雷达歌单和底部播放栏](docs/screenshots/discovery.png)
+
+## 安装
+
+在 Ubuntu 24.04（x86-64）上，从[发行页](https://github.com/c99z/record-room/releases/latest)下载 `.deb` 安装包。在下载目录执行：
+
+```bash
+sudo apt install ./record-room_0.1.0_amd64.deb
+```
+
+安装后，在应用菜单打开「唱片室 Record Room」，或在终端运行 `record-room`。
 
 ## 主要功能
 
@@ -21,6 +31,22 @@ Record Room 是一款用 C++ 和 Qt Quick/QML 编写的 Linux 桌面音乐客户
 播放《致爱丽丝》时，左侧黑胶唱片展示专辑封面，右侧歌词区显示「纯音乐，请欣赏」。
 
 ![全屏播放页中的黑胶唱片、唱臂和纯音乐提示](docs/screenshots/player.png)
+
+### 桌面歌词
+
+播放时点击底栏的「词」，歌词会在独立悬浮窗中随音乐高亮。右键点击「词」可以切换样式；锁定窗口后，再点一次即可解锁。以下是播放《茉莉花》时的三个窗口实拍。
+
+**黑胶胶囊**将封面、当前歌词和进度收在一条窄栏里。
+
+![黑胶胶囊样式的桌面歌词](docs/screenshots/lyrics-vinyl.png)
+
+**舞台双轨**在左右两侧交替显示歌词，可以提前看到下一句。
+
+![舞台双轨样式的桌面歌词](docs/screenshots/lyrics-stage.png)
+
+**唱片铭牌**在歌词旁保留方形封面、曲目名和播放时间。
+
+![唱片铭牌样式的桌面歌词](docs/screenshots/lyrics-card.png)
 
 ## 构建与运行
 

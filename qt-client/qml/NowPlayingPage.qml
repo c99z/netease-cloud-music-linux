@@ -217,7 +217,7 @@ Rectangle {
             Label {
                 Layout.fillWidth: true
                 Layout.topMargin: 10
-                text: page.track.title || "网易云音乐"
+                text: page.track.title || Qt.application.displayName
                 textFormat: Text.PlainText
                 color: "#f3ece8"
                 font.pixelSize: 24

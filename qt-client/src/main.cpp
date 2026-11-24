@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
         QLocalServer::removeServer(instanceName());
         instanceServer.listen(instanceName());
     }
-    app.setApplicationDisplayName(QStringLiteral("网易云音乐"));
+    app.setApplicationDisplayName(QStringLiteral("唱片室 Record Room"));
     app.setDesktopFileName("local.record-room");
     QIcon icon;
     for (const int size : {16, 32, 48, 64, 128})

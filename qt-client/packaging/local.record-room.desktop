@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=唱片室 Record Room
+Comment=浏览网易云音乐、播放歌曲和显示桌面歌词
+Exec=record-room
+Icon=local.record-room
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+StartupWMClass=RecordRoom

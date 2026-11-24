@@ -77,3 +77,15 @@ qt_add_qml_module(record-room
         qml/PlaylistPage.qml
         qml/SearchPage.qml
 )
+
+include(GNUInstallDirs)
+set_target_properties(record-room PROPERTIES INSTALL_RPATH "$ORIGIN/../${CMAKE_INSTALL_LIBDIR}")
+install(TARGETS record-room RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+option(RECORD_ROOM_BUNDLE_QT "Install the Qt runtime alongside the application" OFF)
+if(RECORD_ROOM_BUNDLE_QT)
+    qt_generate_deploy_qml_app_script(
+        TARGET record-room OUTPUT_SCRIPT deploy_script NO_TRANSLATIONS
+        INCLUDE_PLUGINS qxcb qwayland
+    )
+    install(SCRIPT ${deploy_script})
+endif()
