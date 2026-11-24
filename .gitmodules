@@ -1,6 +1,0 @@
-[submodule "api-enhanced"]
-	path = api-enhanced
-	url = https://github.com/NeteaseCloudMusicApiEnhanced/api-enhanced.git
-[submodule "netease-cloud-music-gtk"]
-	path = netease-cloud-music-gtk
-	url = https://github.com/gmg137/netease-cloud-music-gtk.git
