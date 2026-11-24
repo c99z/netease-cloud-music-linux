@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(RecordRoom VERSION 0.1.0 LANGUAGES CXX)
+project(RecordRoom VERSION 0.1.1 LANGUAGES CXX)
 
 find_package(Qt6 6.9 REQUIRED COMPONENTS Quick QuickControls2 Network Multimedia Qml DBus)
 find_package(Qt6 6.9 OPTIONAL_COMPONENTS ShaderTools)

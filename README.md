@@ -1,18 +1,18 @@
-# 唱片室 Record Room
+# 网易云音乐
 
-Record Room 是一款用 C++ 和 Qt Quick/QML 编写的 Linux 桌面音乐客户端。打开应用就能浏览网易云音乐的公开榜单、搜索歌曲并播放；扫码登录后，还可以同步歌单、收藏音乐和使用私人漫游。
+这是一个用 C++ 和 Qt Quick/QML 编写的网易云音乐 Linux 桌面客户端。打开应用就能浏览公开榜单、搜索歌曲并播放；扫码登录后，还可以同步歌单、收藏音乐和使用私人漫游。
 
 ![访客模式下的推荐首页，展示精选推荐、雷达歌单和底部播放栏](docs/screenshots/discovery.png)
 
 ## 安装
 
-在 Ubuntu 24.04（x86-64）上，从[发行页](https://github.com/c99z/record-room/releases/latest)下载 `.deb` 安装包。在下载目录执行：
+在 Ubuntu 24.04（x86-64）上，从[发行页](https://github.com/c99z/netease-cloud-music-redesign/releases/latest)下载 `.deb` 安装包。在下载目录执行：
 
 ```bash
-sudo apt install ./record-room_0.1.0_amd64.deb
+sudo apt install ./record-room_0.1.1_amd64.deb
 ```
 
-安装后，在应用菜单打开「唱片室 Record Room」，或在终端运行 `record-room`。
+安装后，在应用菜单打开「网易云音乐」，或在终端运行 `record-room`。
 
 ## 主要功能
 

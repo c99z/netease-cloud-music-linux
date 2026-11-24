@@ -40,11 +40,11 @@ cat > "$root/DEBIAN/control" <<EOF
 Package: record-room
 Version: $version
 Architecture: $arch
-Maintainer: Record Room maintainers <c99z@users.noreply.github.com>
-Description: Record Room desktop music player with synchronized lyrics
+Maintainer: c99z <c99z@users.noreply.github.com>
+Description: NetEase Cloud Music desktop client with synchronized lyrics
 Section: sound
 Priority: optional
 Depends: ${depends#shlibs:Depends=}, ca-certificates, libgl1-mesa-dri, fonts-noto-cjk
-Homepage: https://github.com/c99z/record-room
+Homepage: https://github.com/c99z/netease-cloud-music-redesign
 EOF
 dpkg-deb --root-owner-group -Zxz -z4 --build "$root" "$output/record-room_${version}_${arch}.deb"
